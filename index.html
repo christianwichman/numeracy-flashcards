@@ -6,90 +6,46 @@
 <title>Grade 6 Numeracy Flashcards (English–Farsi)</title>
 <style>
   :root{
-    --bg:#0f172a;           /* slate-900 */
-    --panel:#111827;        /* gray-900 */
-    --accent:#22d3ee;       /* cyan-400 */
-    --accent-2:#f59e0b;     /* amber-500 */
-    --muted:#e5e7eb;        /* gray-200 */
-    --text:#f8fafc;         /* slate-50 */
-    --good:#10b981;         /* emerald-500 */
-    --bad:#ef4444;          /* red-500 */
-    --card:#0b1220;         /* deep panel */
-    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --bg:#0f172a; --panel:#111827; --accent:#22d3ee; --accent-2:#f59e0b; --muted:#e5e7eb; --text:#f8fafc;
+    --good:#10b981; --bad:#ef4444; --card:#0b1220; --shadow: 0 10px 30px rgba(0,0,0,.35);
   }
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{
-    margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+  body{ margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
     background: radial-gradient(1200px 800px at 80% -10%, #1e293b 0%, var(--bg) 40%);
-    color:var(--text); display:flex; flex-direction:column; gap:16px; padding:16px;
-  }
-  header{
-    display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
-  }
+    color:var(--text); display:flex; flex-direction:column; gap:16px; padding:16px; }
+  header{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between; }
   header h1{font-size:1.1rem; margin:0; letter-spacing:.2px; font-weight:700}
-  .controls{
-    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
-    background:linear-gradient(180deg, #0c1222, var(--panel));
-    padding:10px; border-radius:10px; box-shadow:var(--shadow); border:1px solid #1f2937;
-  }
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; background:linear-gradient(180deg,#0c1222,var(--panel));
+    padding:10px; border-radius:10px; box-shadow:var(--shadow); border:1px solid #1f2937; }
   .controls > * { margin:0 }
-  select, button, .toggle, input[type="checkbox"]{
-    font:inherit; color:var(--text); background:#0b1220; border:1px solid #263042; padding:8px 10px; border-radius:8px;
-  }
+  select, button, input[type="checkbox"]{ font:inherit; color:var(--text); background:#0b1220; border:1px solid #263042; padding:8px 10px; border-radius:8px; }
   button{ cursor:pointer; transition:transform .04s ease, background .2s ease; }
   button:hover{ transform:translateY(-1px); }
-  button.primary{ background:linear-gradient(180deg, #0aa3b8, #0284c7); border-color:#0369a1 }
-  button.good{ background:linear-gradient(180deg, #10b981, #059669); border-color:#047857 }
-  button.bad{ background:linear-gradient(180deg, #ef4444, #b91c1c); border-color:#7f1d1d }
-  .pill{
-    padding:6px 10px; border-radius:999px; border:1px solid #263042; background:#0b1220; font-size:.9rem;
-  }
+  button.primary{ background:linear-gradient(180deg,#0aa3b8,#0284c7); border-color:#0369a1 }
+  button.good{ background:linear-gradient(180deg,#10b981,#059669); border-color:#047857 }
+  button.bad{ background:linear-gradient(180deg,#ef4444,#b91c1c); border-color:#7f1d1d }
+  .pill{ padding:6px 10px; border-radius:999px; border:1px solid #263042; background:#0b1220; font-size:.9rem; }
   .row{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
   .grow{ flex:1 1 auto; }
   .right{ margin-left:auto }
-  .progress{
-    width:100%; height:10px; background:#111827; border:1px solid #263042; border-radius:999px; overflow:hidden;
-    box-shadow: inset 0 2px 8px rgba(0,0,0,.3);
-  }
-  .progress > div{
-    height:100%; background: linear-gradient(90deg, var(--accent), #60a5fa);
-    width:0%;
-  }
-
-  /* Card */
+  .progress{ width:100%; height:10px; background:#111827; border:1px solid #263042; border-radius:999px; overflow:hidden; box-shadow: inset 0 2px 8px rgba(0,0,0,.3); }
+  .progress > div{ height:100%; background: linear-gradient(90deg, var(--accent), #60a5fa); width:0%; }
   .stage{ display:grid; place-items:center; flex:1; min-height:50vh; }
-  .card{
-    width:min(800px, 92vw); aspect-ratio: 16/9; background: radial-gradient(900px 600px at 20% -10%, #111b33, var(--card));
+  .card{ width:min(800px, 92vw); aspect-ratio:16/9; background: radial-gradient(900px 600px at 20% -10%, #111b33, var(--card));
     border:1px solid #253046; border-radius:18px; box-shadow: var(--shadow);
-    display:flex; align-items:center; justify-content:center; padding:24px;
-    perspective:1200px; position:relative; user-select:none;
-  }
-  .inner{
-    position:relative; width:100%; height:100%; transform-style:preserve-3d; transition: transform .5s ease;
-  }
+    display:flex; align-items:center; justify-content:center; padding:24px; perspective:1200px; position:relative; user-select:none; }
+  .inner{ position:relative; width:100%; height:100%; transform-style:preserve-3d; transition: transform .5s ease; }
   .card.flipped .inner{ transform: rotateY(180deg); }
-  .face{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:24px;
-    backface-visibility:hidden;
-  }
-  .term{
-    font-size: clamp(1.6rem, 5vw, 3rem); text-align:center; line-height:1.2; letter-spacing:.3px;
-  }
-  .sub{
-    position:absolute; bottom:14px; left:16px; right:16px; display:flex; justify-content:space-between; font-size:.95rem; color:#cbd5e1;
-    opacity:.9;
-  }
+  .face{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:24px; backface-visibility:hidden; }
+  .term{ font-size: clamp(1.6rem, 5vw, 3rem); text-align:center; line-height:1.2; letter-spacing:.3px; }
+  .sub{ position:absolute; bottom:14px; left:16px; right:16px; display:flex; justify-content:space-between; font-size:.95rem; color:#cbd5e1; opacity:.9; }
   .cat{ color: var(--accent-2) }
   .face.back{ transform: rotateY(180deg); }
-  .rtl{ direction: rtl; font-family: "Noto Naskh Arabic", "Noto Sans Arabic", "Vazirmatn", Tahoma, Arial, sans-serif; }
-
+  .rtl{ direction: rtl; font-family: "Noto Naskh Arabic","Noto Sans Arabic","Vazirmatn",Tahoma,Arial,sans-serif; }
   footer{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; opacity:.9 }
-  .kbd{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0b1220; border:1px solid #263042; padding:2px 6px; border-radius:6px; }
-
-  @media (max-width:600px){
-    .sub{ font-size:.85rem }
-  }
+  .kbd{ font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:#0b1220; border:1px solid #263042; padding:2px 6px; border-radius:6px; }
+  @media (max-width:600px){ .sub{ font-size:.85rem } }
 </style>
 </head>
 <body>
@@ -151,7 +107,7 @@
           <div class="sub"><span id="counter">0 / 0</span><span class="cat" id="cat"></span></div>
         </div>
         <div class="face back">
-          <div class="term rtl" id="backTerm">…</div>
+          <div class="term" id="backTerm">…</div>
           <div class="sub"><span>Press <span class="kbd">G</span> if you “Got it”, <span class="kbd">P</span> for “Practice”</span><span id="cat2" class="cat"></span></div>
         </div>
       </div>
@@ -171,9 +127,8 @@
   </footer>
 
 <script>
-/* ---------- Data: 100 items from your list (kept as-is, even if a few repeated across categories) ---------- */
+/* ---------- Data: 100 cards ---------- */
 const CARDS = [
-  // Numbers and Operations (1–20)
   {en:"Number", fa:"عدد", cat:"Numbers and Operations"},
   {en:"Digit", fa:"رقم", cat:"Numbers and Operations"},
   {en:"Integer", fa:"عدد صحیح", cat:"Numbers and Operations"},
@@ -194,8 +149,6 @@ const CARDS = [
   {en:"Quotient", fa:"خارج‌قسمت", cat:"Numbers and Operations"},
   {en:"Remainder", fa:"باقیمانده", cat:"Numbers and Operations"},
   {en:"Operation", fa:"عمل", cat:"Numbers and Operations"},
-
-  // Arithmetic and Equations (21–40)
   {en:"Addition", fa:"جمع", cat:"Arithmetic and Equations"},
   {en:"Subtraction", fa:"تفریق", cat:"Arithmetic and Equations"},
   {en:"Multiplication", fa:"ضرب", cat:"Arithmetic and Equations"},
@@ -216,8 +169,6 @@ const CARDS = [
   {en:"Round", fa:"گرد کردن", cat:"Arithmetic and Equations"},
   {en:"Approximation", fa:"تقریب", cat:"Arithmetic and Equations"},
   {en:"Evaluate", fa:"ارزیابی کردن", cat:"Arithmetic and Equations"},
-
-  // Measurement and Geometry (41–60)
   {en:"Length", fa:"طول", cat:"Measurement and Geometry"},
   {en:"Width", fa:"عرض", cat:"Measurement and Geometry"},
   {en:"Height", fa:"ارتفاع", cat:"Measurement and Geometry"},
@@ -238,8 +189,6 @@ const CARDS = [
   {en:"Diameter", fa:"قطر", cat:"Measurement and Geometry"},
   {en:"Circumference", fa:"محیط دایره", cat:"Measurement and Geometry"},
   {en:"Parallel", fa:"موازی", cat:"Measurement and Geometry"},
-
-  // Data and Probability (61–80)
   {en:"Data", fa:"داده", cat:"Data and Probability"},
   {en:"Graph", fa:"نمودار", cat:"Data and Probability"},
   {en:"Table", fa:"جدول", cat:"Data and Probability"},
@@ -260,8 +209,6 @@ const CARDS = [
   {en:"Frequency", fa:"فراوانی", cat:"Data and Probability"},
   {en:"Histogram", fa:"هیستوگرام", cat:"Data and Probability"},
   {en:"Bar graph", fa:"نمودار میله‌ای", cat:"Data and Probability"},
-
-  // Patterns, Algebra, and Reasoning (81–100)
   {en:"Pattern", fa:"الگو", cat:"Patterns, Algebra, and Reasoning"},
   {en:"Sequence", fa:"دنباله", cat:"Patterns, Algebra, and Reasoning"},
   {en:"Rule", fa:"قانون", cat:"Patterns, Algebra, and Reasoning"},
@@ -284,7 +231,6 @@ const CARDS = [
   {en:"Reasoning", fa:"استدلال", cat:"Patterns, Algebra, and Reasoning"}
 ];
 
-/* ---------- State & helpers ---------- */
 const els = {
   category: document.getElementById('category'),
   front: document.getElementById('front'),
@@ -307,23 +253,19 @@ const els = {
   bar: document.getElementById('bar'),
 };
 
-const STORAGE_KEY = 'numeracy_flash_status_v1'; // { "English term": "gotit" | "practice" | undefined }
+const STORAGE_KEY = 'numeracy_flash_status_v1';
 const statusMap = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 
 let current = 0;
 let flipped = false;
-let view = []; // filtered/shuffled indexes
+let view = [];
 let voices = [];
 
-/* --- Text-to-speech setup (best effort) --- */
+/* --- TTS --- */
 if ('speechSynthesis' in window) {
-  function loadVoices(){
-    voices = window.speechSynthesis.getVoices();
-  }
+  function loadVoices(){ voices = window.speechSynthesis.getVoices(); }
   loadVoices();
-  if (speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = loadVoices;
-  }
+  if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = loadVoices;
 }
 function speak(text, lang='en'){
   if (!els.tts.checked || !('speechSynthesis' in window)) return;
@@ -337,24 +279,19 @@ function speak(text, lang='en'){
   speechSynthesis.speak(u);
 }
 
-/* ---------- Deck building ---------- */
+/* ---------- Deck ---------- */
 function buildView(){
   const catVal = els.category.value;
   const deckVal = els.deck.value;
   let idxs = CARDS.map((_,i)=>i);
-  if (catVal !== 'all'){
-    idxs = idxs.filter(i => CARDS[i].cat === catVal);
-  }
+  if (catVal !== 'all'){ idxs = idxs.filter(i => CARDS[i].cat === catVal); }
   if (deckVal !== 'all'){
     idxs = idxs.filter(i => {
       const st = statusMap[CARDS[i].en];
       return deckVal === 'practice' ? st === 'practice' : st === 'gotit';
     });
   }
-  // If deck would be empty, fall back gracefully
-  if (idxs.length === 0){
-    idxs = [0];
-  }
+  if (idxs.length === 0) idxs = [0];
   view = idxs;
   current = 0;
   flipped = false;
@@ -371,59 +308,58 @@ function shuffleView(){
   render();
 }
 
-/* ---------- UI rendering ---------- */
+/* ---------- Render: front face = selected language; back face = opposite. ---------- */
 function render(){
   const total = view.length;
   const c = CARDS[view[current]];
-  const frontLang = els.front.value; // 'en' | 'fa'
-  const isFrontFarsi = frontLang === 'fa';
+  const frontLang = els.front.value; // 'en' or 'fa'
+  const backLang  = frontLang === 'en' ? 'fa' : 'en';
 
+  // Set content ONCE, independent of flipped state
+  els.frontTerm.textContent = c[frontLang];
+  els.backTerm.textContent  = c[backLang];
+
+  // RTL classes fixed to which side holds Farsi
+  els.frontTerm.classList.toggle('rtl', frontLang === 'fa');
+  els.backTerm.classList.toggle('rtl', backLang === 'fa');
+
+  // Flip state only changes which face is visible
   els.card.classList.toggle('flipped', flipped);
-  const showFront = flipped ? (frontLang === 'fa' ? c.en : c.fa) : (frontLang === 'fa' ? c.fa : c.en);
-  const showBack  = flipped ? (frontLang === 'fa' ? c.fa : c.en) : (frontLang === 'fa' ? c.en : c.fa);
 
-  els.frontTerm.textContent = showFront;
-  els.backTerm.textContent  = showBack;
-
-  // RTL class on whichever side is showing Farsi text
-  document.querySelector('.face.front .term').classList.toggle('rtl', (!flipped && frontLang === 'fa') || (flipped && frontLang === 'en'));
-  document.querySelector('.face.back .term').classList.toggle('rtl',  (!flipped && frontLang === 'en') || (flipped && frontLang === 'fa'));
-
+  // Counters & category
   els.counter.textContent = `${current+1} / ${total}`;
   els.cat.textContent = c.cat;
   els.cat2.textContent = c.cat;
 
-  // progress bar: percent of cards marked "gotit" within current view
+  // Progress in current view
   const gotCount = view.reduce((acc,i)=> acc + (statusMap[CARDS[i].en]==='gotit' ? 1 : 0), 0);
-  const pct = Math.round((gotCount / total) * 100);
-  els.bar.style.width = total ? `${pct}%` : '0%';
+  els.bar.style.width = total ? `${Math.round((gotCount/total)*100)}%` : '0%';
 
-  // Speak front (helpful prompt)
-  speak(!flipped ? (frontLang==='fa'?c.fa:c.en) : (frontLang==='fa'?c.en:c.fa), frontLang==='fa' && !flipped ? 'fa' : 'en');
+  // Speak the currently visible side
+  const visibleLang = flipped ? backLang : frontLang;
+  const textToSpeak = flipped ? c[backLang] : c[frontLang];
+  speak(textToSpeak, visibleLang);
 }
 
 function flip(){
   flipped = !flipped;
   render();
 }
-
 function move(delta){
   current += delta;
   if (current < 0) current = view.length - 1;
   if (current >= view.length) current = 0;
-  flipped = false;
+  flipped = false; // moving to a new card shows the front first
   render();
 }
-
-function mark(status){ // 'gotit' | 'practice'
+function mark(status){
   const card = CARDS[view[current]];
-  if (status) statusMap[card.en] = status;
-  else delete statusMap[card.en];
+  if (status) statusMap[card.en] = status; else delete statusMap[card.en];
   localStorage.setItem(STORAGE_KEY, JSON.stringify(statusMap));
   move(+1);
 }
 
-/* ---------- Wire up ---------- */
+/* ---------- Events ---------- */
 els.flipBtn.addEventListener('click', flip);
 els.card.addEventListener('click', flip);
 els.next.addEventListener('click', ()=>move(+1));
@@ -433,8 +369,7 @@ els.resetProgress.addEventListener('click', ()=>{
   if (confirm('Reset “Got it / Practice” for all cards?')){
     for (const k in statusMap) delete statusMap[k];
     localStorage.setItem(STORAGE_KEY, JSON.stringify(statusMap));
-    render();
-    announce('Progress reset');
+    render(); announce('Progress reset');
   }
 });
 els.got.addEventListener('click', ()=>mark('gotit'));
@@ -442,7 +377,7 @@ els.practice.addEventListener('click', ()=>mark('practice'));
 els.category.addEventListener('change', buildView);
 els.front.addEventListener('change', render);
 els.deck.addEventListener('change', buildView);
-els.tts.addEventListener('change', ()=>render());
+els.tts.addEventListener('change', render);
 
 document.addEventListener('keydown', (e)=>{
   if (e.target && ['INPUT','SELECT','TEXTAREA','BUTTON'].includes(e.target.tagName)) return;
@@ -454,15 +389,16 @@ document.addEventListener('keydown', (e)=>{
   else if (e.key.toLowerCase() === 'p'){ mark('practice'); }
 });
 
-/* polite live region for announcements (a11y) */
+/* a11y live region */
 const live = document.createElement('div');
 live.setAttribute('aria-live','polite');
-live.className='visually-hidden';
+live.style.position='absolute'; live.style.left='-9999px';
 document.body.appendChild(live);
 function announce(msg){ live.textContent = msg; }
 
-buildView(); // initial
-shuffleView(); // start randomized
+/* Init */
+buildView();
+shuffleView();
 </script>
 </body>
 </html>
